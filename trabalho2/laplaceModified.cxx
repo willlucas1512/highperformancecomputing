@@ -103,6 +103,7 @@ void LaplaceSolver :: initialize() {}
 Real LaplaceSolver :: timeStep(const Real dt) {
     Real dx2 = g->dx*g->dx;
     Real dy2 = g->dy*g->dy;
+    Real denominador = 0.5/(dx2 + dy2);
     Real tmp;
     Real err = 0.0;
     int nx = g->nx;
@@ -113,7 +114,7 @@ Real LaplaceSolver :: timeStep(const Real dt) {
         for (int j=1; j<ny-1; ++j) {
             tmp = u[i][j];
             u[i][j] = ((u[i-1][j] + u[i+1][j])*dy2 +
-                       (u[i][j-1] + u[i][j+1])*dx2)*0.5/(dx2 + dy2);
+                       (u[i][j-1] + u[i][j+1])*dx2)*denominador;
             // err += SQR(u[i][j] - tmp);
             err += (u[i][j] - tmp) * (u[i][j] - tmp);
         }
