@@ -22,8 +22,6 @@ inline double seconds(void) {
 // {
 //     return (x*x - y*y);
 // }
-
-
 struct Grid {
     Real dx, dy;
     int nx, ny;
@@ -83,8 +81,6 @@ void Grid :: setBCFunc() {
         u[i][ny-1] = x*x - ymax*ymax;
     }
 }
-
-
 struct LaplaceSolver {
     Grid *g;
 
@@ -101,7 +97,6 @@ LaplaceSolver :: LaplaceSolver(Grid *grid) {
 }
 
 LaplaceSolver:: ~LaplaceSolver() {}
-
 
 void LaplaceSolver :: initialize() {}
 
@@ -138,7 +133,6 @@ Real LaplaceSolver :: solve(const int n_iter, const Real eps) {
     }
     return Real(count);
 }
-
 
 int main(int argc, char * argv[]) {
     int nx, n_iter;
